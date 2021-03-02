@@ -1,0 +1,20 @@
+<!-- <hello name="{{ name }}"></hello> -->
+<p>Input Note</p>
+<br><br>
+Judul:
+<input type="text" [(ngModel)]="textjudul"/>
+<br><br>
+Isi:
+<input type="text" [(ngModel)]="textisi"/>
+<br><br>
+Tanggal:
+<input type="date" [(ngModel)]="texttanggal"/>
+<br><br>
+<button (click)="SAVE()">Save</button>
+<br><br><br>
+{{this.globalVar.getjudul()}}<br>
+Show Detail:
+<input type="text" placeholder="Input Judul" [(ngModel)]="textcarijudul"/>
+<button (click)="OPENHALDETAIL()">Show Detail</button>
+
+<router-outlet></router-outlet>
