@@ -1,0 +1,26 @@
+<ng-template *ngIf="halaman3; then template3true; else template3false"></ng-template>
+
+<ng-template #template3true>
+	<p>
+		Favorites
+		<br>
+		<br>
+		<ng-template *ngIf="liked; then show; else none"></ng-template>
+		<ng-template #show>
+
+			Judul: {{judulglobal}}
+			<br>
+Isi: {{isiglobal}}
+			<br>
+Tanggal: {{tanggalglobal}}
+			<br>
+		</ng-template>
+
+			<ng-template #none>
+			</ng-template>
+			<button (click)="OPENHALINPUT()">BACK TO HALAMAN 1</button>
+	</p>
+</ng-template>
+<router-outlet></router-outlet>
+<ng-template #template3false>
+</ng-template>

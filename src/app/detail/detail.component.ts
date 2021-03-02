@@ -1,22 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { GlobalvarService } from '../globalvar.service';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { GlobalvarService } from "../globalvar.service";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-detail',
-  templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css']
+  selector: "app-detail",
+  templateUrl: "./detail.component.html",
+  styleUrls: ["./detail.component.css"]
 })
 export class DetailComponent implements OnInit {
-
-constructor(private route : ActivatedRoute){
+  constructor(private router: Router, public globalVar: GlobalvarService) {
+    this.judulglobal = this.globalVar.getjudul();
+    this.isiglobal = this.globalVar.getisi();
+    this.tanggalglobal = this.globalVar.gettanggal();
+    this.halaman2 = true;
+    this.globalVar.sethalaman1(false);
+    this.globalVar.sethalaman3(false);
   }
 
-  paramjudul : string;
+  halaman2;
+  judulglobal;
+  isiglobal;
+  tanggalglobal;
+  
+  ngOnInit() {}
 
-  ngOnInit() {
-    let judul = this.route.snapshot.paramMap.get('judul');
-    this.paramjudul = judul;
+  LIKE() {
+    this.globalVar.setliked(true);
   }
 
+  OPENHALFAVORIT() {
+    this.globalVar.sethalaman2(false);
+    this.halaman2 = false;
+    this.router.navigate(["/favorit"]);
+  }
 }

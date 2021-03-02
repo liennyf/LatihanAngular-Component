@@ -1,0 +1,20 @@
+<ng-template *ngIf="halaman2; then template2true; else template2false"></ng-template>
+
+<ng-template #template2true>
+	<p>
+		Detail
+		<br>
+		<br>
+Judul: {{judulglobal}}
+		<br>
+Isi: {{isiglobal}}
+		<br>
+Tanggal: {{tanggalglobal}}
+		<br>
+		<button (click)="LIKE()">LIKE</button><br>
+		<button (click)="OPENHALFAVORIT()">Show Favorites</button>
+	</p>
+</ng-template>
+<router-outlet></router-outlet>
+<ng-template #template2false>
+</ng-template>

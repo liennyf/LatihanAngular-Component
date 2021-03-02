@@ -1,30 +1,39 @@
-import { Component, VERSION } from '@angular/core';
-import { Router } from '@angular/router';
-import { GlobalvarService } from './globalvar.service';
+import { Component, VERSION } from "@angular/core";
+import { Router } from "@angular/router";
+import { GlobalvarService } from "./globalvar.service";
 
 @Component({
-  selector: 'my-app',
-  templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  selector: "my-app",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
 })
-export class AppComponent  {
-  constructor(private router : Router, public globalVar:GlobalvarService){
+export class AppComponent {
+  constructor(private router: Router, public globalVar: GlobalvarService) {
+    this.halaman1 = true;
   }
-
+  halaman1;
   textjudul = "";
   textisi = "";
   texttanggal = "";
-  textcarijudul="";
+  textcarijudul = "";
 
-  name = 'Angular ' + VERSION.major;
+  name = "Angular " + VERSION.major;
 
-  SAVE(){
+  SAVE() {
     this.globalVar.setjudul(this.textjudul);
     this.globalVar.setisi(this.textisi);
     this.globalVar.settanggal(this.texttanggal);
   }
 
-  OPENHALDETAIL(){
-    this.router.navigate(["/detail/"+this.textcarijudul]);
+  OPENHALDETAIL() {
+    this.globalVar.sethalaman1(false);
+    this.halaman1 = false;
+    this.router.navigate(["/detail/" + this.textcarijudul]);
+  }
+
+  OPENHALFAVORIT(){
+    this.globalVar.sethalaman1(false);
+    this.halaman1 = false;
+    this.router.navigate(["/favorit"]);
   }
 }

@@ -1,20 +1,29 @@
 <!-- <hello name="{{ name }}"></hello> -->
-<p>Input Note</p>
-<br><br>
+<ng-template *ngIf="halaman1; then templatetrue; else templatefalse"></ng-template>
+
+<ng-template #templatetrue>
+	<p>Input Note</p>
+	<br><br>
 Judul:
-<input type="text" [(ngModel)]="textjudul"/>
-<br><br>
+	<input type="text" [(ngModel)]="textjudul"/>
+	<br><br>
 Isi:
-<input type="text" [(ngModel)]="textisi"/>
-<br><br>
+	<input type="text" [(ngModel)]="textisi"/>
+	<br><br>
 Tanggal:
-<input type="date" [(ngModel)]="texttanggal"/>
-<br><br>
-<button (click)="SAVE()">Save</button>
-<br><br><br>
-{{this.globalVar.getjudul()}}<br>
-Show Detail:
-<input type="text" placeholder="Input Judul" [(ngModel)]="textcarijudul"/>
-<button (click)="OPENHALDETAIL()">Show Detail</button>
+	<input type="date" [(ngModel)]="texttanggal"/>
+	<br><br>
+	<button (click)="SAVE()">Save</button>
+	<br><br><br>
+
+	Show Detail:
+	<input type="text" placeholder="Input Judul" [(ngModel)]="textcarijudul"/>
+	<button (click)="OPENHALDETAIL()">Show Detail</button><br><br>
+	<button (click)="OPENHALFAVORIT()">Show Favorites</button>
+
+</ng-template>
 
 <router-outlet></router-outlet>
+
+<ng-template #templatefalse>
+</ng-template>
